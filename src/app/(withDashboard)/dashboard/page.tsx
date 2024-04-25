@@ -13,7 +13,7 @@ const DashboardPage = async () => {
           <h1 className="text-4xl text-center mt-10">Welcome {session?.user?.name}</h1>
           <h1 className="text-4xl text-center mt-10">Logged-in user email: {session?.user?.email}</h1>
           <Image
-            src={session?.user?.image}
+            src={session?.user?.image || "https://q5n8c8q9.rocketcdn.me/wp-content/uploads/2020/03/software-demo.png"}
             width={100}
             height={100}
             alt="dashboard"
