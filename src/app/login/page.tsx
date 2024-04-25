@@ -36,7 +36,10 @@ const LoginPage = () => {
         </div>
 
         <div className="card w-[70%] h-[80%] shadow-xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body"
+          >
             <div className="form-control mt-5">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -57,20 +60,26 @@ const LoginPage = () => {
               <input
                 {...register("password")}
                 type="password"
-                placeholder="Email"
+                placeholder="Password"
                 className="input input-bordered"
                 required
               />
             </div>
 
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-accent btn-outline">
+              <button
+                type="submit"
+                className="btn btn-accent btn-outline"
+              >
                 Login
               </button>
             </div>
             <p className="text-center">
               Don&apos;t have an account?{" "}
-              <Link className="text-accent" href="/register">
+              <Link
+                className="text-accent"
+                href="/register"
+              >
                 Create an account
               </Link>
             </p>
