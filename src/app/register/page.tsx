@@ -1,7 +1,9 @@
 "use client";
 
+import { registerUser } from "@/utils/actions/registerUser";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export type UserData = {
@@ -17,10 +19,17 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm<UserData>();
 
+  const router = useRouter();
+
   const onSubmit = async (data: UserData) => {
-    console.log(data);
+    // console.log(data);
 
     try {
+      const res = await registerUser(data);
+      if (res?.success) {
+        alert(res?.message);
+        router.push("/login");
+      }
     } catch (err: any) {
       console.error(err.message);
       throw new Error(err.message);
@@ -44,7 +53,10 @@ const RegisterPage = () => {
         </div>
 
         <div className="card w-[70%] h-[70%] shadow-xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body py-3">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body py-3"
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name</span>
@@ -84,13 +96,19 @@ const RegisterPage = () => {
             </div>
 
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-accent btn-outline">
+              <button
+                type="submit"
+                className="btn btn-accent btn-outline"
+              >
                 Register
               </button>
             </div>
             <p className="text-center">
               Already have an account?{" "}
-              <Link className="text-accent" href="/login">
+              <Link
+                className="text-accent"
+                href="/login"
+              >
                 Login
               </Link>
             </p>
