@@ -93,6 +93,11 @@ const LoginPage = () => {
                 width={50}
                 height={50}
                 alt="google logo"
+                onClick={() =>
+                  signIn("google", {
+                    callbackUrl: "http://localhost:3000/dashboard",
+                  })
+                }
               />
             </button>
             {/* <button className="btn btn-circle" onClick={()=> signIn()}> */} ---------- use in next auth signin page
